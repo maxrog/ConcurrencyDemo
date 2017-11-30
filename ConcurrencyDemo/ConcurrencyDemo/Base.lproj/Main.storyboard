@@ -172,7 +172,7 @@
                                     <constraint firstAttribute="height" constant="40" id="A2n-rf-UOg"/>
                                     <constraint firstAttribute="width" constant="160" id="biN-fJ-KjW"/>
                                 </constraints>
-                                <state key="normal" title="Main Queue">
+                                <state key="normal" title="Synchronous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -187,10 +187,11 @@
                                     <constraint firstAttribute="height" constant="40" id="D39-df-G7t"/>
                                     <constraint firstAttribute="width" constant="160" id="s4z-80-g81"/>
                                 </constraints>
-                                <state key="normal" title="Concurrent Queue">
+                                <state key="normal" title="Concurrent">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="concurrentDownload:" destination="gXC-bx-oTL" eventType="touchUpInside" id="6yD-pI-aKC"/>
                                     <action selector="synchronousDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="btd-t1-7hg"/>
                                 </connections>
                             </button>
@@ -201,7 +202,7 @@
                                     <constraint firstAttribute="width" constant="160" id="7yn-6Q-1Yu"/>
                                     <constraint firstAttribute="height" constant="40" id="KWW-rh-XeM"/>
                                 </constraints>
-                                <state key="normal" title="Serial Queue">
+                                <state key="normal" title="Serial">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
