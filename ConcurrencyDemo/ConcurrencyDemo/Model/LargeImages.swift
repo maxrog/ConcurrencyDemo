@@ -13,5 +13,8 @@ enum LargeImages: String {
     case whale = "https://d17h27t6h515a5.cloudfront.net/topher/2017/November/59fe5127_whale/whale.jpg"
     case shark = "https://d17h27t6h515a5.cloudfront.net/topher/2017/November/59fe5123_shark/shark.jpg"
     case seaLion = "https://d17h27t6h515a5.cloudfront.net/topher/2017/November/59fe511f_sealion/sealion.jpg"
+    case jellyFish = "https://immortal-jellyfish.com/wp-content/uploads/2017/09/immortal-jellyfish-e1504520997856.jpg"
+    
+    static let allImages = [whale, shark, seaLion, jellyFish]
     
 }

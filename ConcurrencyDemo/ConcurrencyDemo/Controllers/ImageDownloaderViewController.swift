@@ -13,13 +13,6 @@ class ImageDownloaderViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var imageView: UIImageView!
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     
     // MARK: - Slider Action
     
@@ -78,6 +71,7 @@ class ImageDownloaderViewController: UIViewController {
     
     // MARK: - Completion Handler Method for Async Download
     
+    // A helper method that could be placed in a different class for downloading
     func downloadLargeImage(completionHandler handler: @escaping (UIImage) -> Void) {
         // .background == low priority
         // .userInitiated == normal priorty

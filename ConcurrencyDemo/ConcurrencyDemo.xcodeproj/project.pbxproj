@@ -13,6 +13,8 @@
 		347092D71FCFBB7A006CD6B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347092D51FCFBB7A006CD6B2 /* LaunchScreen.storyboard */; };
 		347092E01FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */; };
 		347092E31FD05B9E006CD6B2 /* LargeImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347092E21FD05B9E006CD6B2 /* LargeImages.swift */; };
+		347092E61FD09926006CD6B2 /* MultipleImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347092E51FD09926006CD6B2 /* MultipleImagesViewController.swift */; };
+		347092E81FD09FFF006CD6B2 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347092E71FD09FFF006CD6B2 /* ImageDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		347092D81FCFBB7A006CD6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderViewController.swift; sourceTree = "<group>"; };
 		347092E21FD05B9E006CD6B2 /* LargeImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImages.swift; sourceTree = "<group>"; };
+		347092E51FD09926006CD6B2 /* MultipleImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImagesViewController.swift; sourceTree = "<group>"; };
+		347092E71FD09FFF006CD6B2 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */,
+				347092E51FD09926006CD6B2 /* MultipleImagesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 		347092E41FD05BA3006CD6B2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				347092E71FD09FFF006CD6B2 /* ImageDownloader.swift */,
 				347092E21FD05B9E006CD6B2 /* LargeImages.swift */,
 			);
 			path = Model;
@@ -164,7 +170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				347092E31FD05B9E006CD6B2 /* LargeImages.swift in Sources */,
+				347092E81FD09FFF006CD6B2 /* ImageDownloader.swift in Sources */,
 				347092E01FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift in Sources */,
+				347092E61FD09926006CD6B2 /* MultipleImagesViewController.swift in Sources */,
 				347092CD1FCFBB7A006CD6B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
