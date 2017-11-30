@@ -27,6 +27,8 @@ class MultipleImagesViewController: UIViewController {
     
     // This uses the main queue and blocks UI -- BAD -- don't do this.
     @IBAction func synchronousDownload(_ sender: UIButton) {
+        clearImageViews()
+        
         for (index, imageView) in self.imageViews.enumerated() {
             let urlString = LargeImages.allImages[index].rawValue
             guard let url = URL(string: urlString) else { return }
@@ -34,6 +36,7 @@ class MultipleImagesViewController: UIViewController {
                 imageView.image = image
             })
         }
+        
     }
     
     // MARK: - Concurrent Download
@@ -42,6 +45,8 @@ class MultipleImagesViewController: UIViewController {
     /// It then switches back to the main queue before performing UI changes
     /// ***NOTE***: The order of images being populated is not guaranteed
     @IBAction func concurrentDownload(_ sender: UIButton) {
+        clearImageViews()
+        
         let defaultQueue = DispatchQueue.global(qos: .default)
         
         for (index, imageView) in self.imageViews.enumerated() {
@@ -55,9 +60,25 @@ class MultipleImagesViewController: UIViewController {
                 })
             }
         }
+        
     }
     
     
+    
+    
+    
+}
+
+
+// MARK: - Helper Function to Clear Images on New Downloader
+
+extension MultipleImagesViewController {
+    
+    func clearImageViews() {
+        for imageView in imageViews {
+            imageView.image = nil
+        }
+    }
     
 }
 
