@@ -23,7 +23,7 @@ class MultipleImagesViewController: UIViewController {
         }
     }
     
-    // MARK: - Synchronous Download
+    // MARK: - Download Using Main Queue (which is also serial)
     
     // This uses the main queue and blocks UI -- BAD -- don't do this.
     @IBAction func synchronousDownload(_ sender: UIButton) {
@@ -39,18 +39,19 @@ class MultipleImagesViewController: UIViewController {
         
     }
     
-    // MARK: - Concurrent Download
+    // MARK: - Download Using Concurrent Dispatch Queues
     
-    /// This offloads our downloading work to concurrent tasks to be run in the background on a default quality of service (priority) queue
+    /// This offloads our downloading work to concurrent tasks to be run in the background on a default quality of service (priority) queue (UI IS NOT BLOCKED!)
     /// It then switches back to the main queue before performing UI changes
     /// ***NOTE***: The order of images being populated is not guaranteed
+    /// ***NOTE***: Tasks do not have to wait - so they download faster
     @IBAction func concurrentDownload(_ sender: UIButton) {
         clearImageViews()
         
-        let defaultQueue = DispatchQueue.global(qos: .default)
+        let concurrentQueue = DispatchQueue.global(qos: .default)
         
         for (index, imageView) in self.imageViews.enumerated() {
-            defaultQueue.async {
+            concurrentQueue.async {
                 let urlString = LargeImages.allImages[index].rawValue
                 guard let url = URL(string: urlString) else { return }
                 ImageDownloader.download(withURL: url, completionHandler: { (image) in
@@ -63,9 +64,29 @@ class MultipleImagesViewController: UIViewController {
         
     }
     
-    
-    
-    
+    // MARK: - Download Using Serial Dispatch Queues
+    /// This offloads our downloading work to a background serial queue (UI IS NOT BLOCKED!)
+    /// It then switches back to the main queue before performing UI changes
+    /// ***NOTE***: The order of images being populated is guaranteed to be in order 1, 2, 3, 4
+    /// ***NOTE***: Tasks wait for the one in front of them to finish - finishes slower than concurrent
+    @IBAction func serialDownload(_ sender: UIButton) {
+        clearImageViews()
+        
+        let serialQueue = DispatchQueue(label: "SerialDownloader")
+        
+        for (index, imageView) in self.imageViews.enumerated() {
+            serialQueue.async {
+                let urlString = LargeImages.allImages[index].rawValue
+                guard let url = URL(string: urlString) else { return }
+                ImageDownloader.download(withURL: url, completionHandler: { (image) in
+                    DispatchQueue.main.async {
+                        imageView.image = image
+                    }
+                })
+            }
+        }
+        
+    }
     
 }
 

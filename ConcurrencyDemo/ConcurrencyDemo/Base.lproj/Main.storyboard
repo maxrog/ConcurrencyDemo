@@ -172,7 +172,7 @@
                                     <constraint firstAttribute="height" constant="40" id="A2n-rf-UOg"/>
                                     <constraint firstAttribute="width" constant="160" id="biN-fJ-KjW"/>
                                 </constraints>
-                                <state key="normal" title="Synchronous">
+                                <state key="normal" title="Main Queue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -187,7 +187,7 @@
                                     <constraint firstAttribute="height" constant="40" id="D39-df-G7t"/>
                                     <constraint firstAttribute="width" constant="160" id="s4z-80-g81"/>
                                 </constraints>
-                                <state key="normal" title="Concurrent">
+                                <state key="normal" title="Concurrent Queue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -202,10 +202,11 @@
                                     <constraint firstAttribute="width" constant="160" id="7yn-6Q-1Yu"/>
                                     <constraint firstAttribute="height" constant="40" id="KWW-rh-XeM"/>
                                 </constraints>
-                                <state key="normal" title="Serial">
+                                <state key="normal" title="Serial Queue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="serialDownload:" destination="gXC-bx-oTL" eventType="touchUpInside" id="Dkw-9p-0Hu"/>
                                     <action selector="synchronousDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="717-8O-FOg"/>
                                 </connections>
                             </button>
