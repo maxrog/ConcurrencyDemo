@@ -11,6 +11,7 @@
 		347092D21FCFBB7A006CD6B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347092D01FCFBB7A006CD6B2 /* Main.storyboard */; };
 		347092D41FCFBB7A006CD6B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 347092D31FCFBB7A006CD6B2 /* Assets.xcassets */; };
 		347092D71FCFBB7A006CD6B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347092D51FCFBB7A006CD6B2 /* LaunchScreen.storyboard */; };
+		347092E01FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		347092D31FCFBB7A006CD6B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		347092D61FCFBB7A006CD6B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		347092D81FCFBB7A006CD6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		347092CB1FCFBB7A006CD6B2 /* ConcurrencyDemo */ = {
 			isa = PBXGroup;
 			children = (
+				347092E11FCFBCB7006CD6B2 /* Controllers */,
 				347092CC1FCFBB7A006CD6B2 /* AppDelegate.swift */,
 				347092D01FCFBB7A006CD6B2 /* Main.storyboard */,
 				347092DE1FCFBB95006CD6B2 /* Supporting Files */,
@@ -67,6 +70,14 @@
 				347092D81FCFBB7A006CD6B2 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		347092E11FCFBCB7006CD6B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				347092DF1FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347092E01FCFBCB3006CD6B2 /* ImageDownloaderViewController.swift in Sources */,
 				347092CD1FCFBB7A006CD6B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

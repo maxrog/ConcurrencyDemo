@@ -1,24 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Image Downloader View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ImageDownloaderViewController" customModule="ConcurrencyDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvF-5b-oe4">
+                                <rect key="frame" x="62" y="95" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="4UM-e7-Trf"/>
+                                    <constraint firstAttribute="height" constant="250" id="znM-6s-swz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9N-fk-LGq">
+                                <rect key="frame" x="107" y="435" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BTG-tQ-kWB"/>
+                                    <constraint firstAttribute="width" constant="160" id="Xpe-7d-NNy"/>
+                                </constraints>
+                                <state key="normal" title="Sync">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="synchronousDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JSc-yR-vO5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDv-eL-ERn">
+                                <rect key="frame" x="107" y="510" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SWu-BP-YF4"/>
+                                    <constraint firstAttribute="width" constant="160" id="uYY-3B-jDG"/>
+                                </constraints>
+                                <state key="normal" title="Async">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="simpleAsynchronousDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1b-2E-wyy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IQ-62-pGb">
+                                <rect key="frame" x="107.5" y="585" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dox-GV-b2h"/>
+                                    <constraint firstAttribute="width" constant="160" id="odC-R8-blT"/>
+                                </constraints>
+                                <state key="normal" title="Async + Closure">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="asynchronousDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AsF-Mb-t18"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-C6-dFn">
+                                <rect key="frame" x="18" y="370" width="339" height="31"/>
+                                <connections>
+                                    <action selector="changeImageAlpha:" destination="BYZ-38-t0r" eventType="valueChanged" id="8w5-0L-Bic"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xvF-5b-oe4" secondAttribute="trailing" constant="63" id="3hh-JJ-MCV"/>
+                            <constraint firstItem="D2w-C6-dFn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3mM-HT-6HJ"/>
+                            <constraint firstItem="SDv-eL-ERn" firstAttribute="top" secondItem="c9N-fk-LGq" secondAttribute="bottom" constant="35" id="CIK-IP-aiX"/>
+                            <constraint firstItem="xvF-5b-oe4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="EMZ-Cl-lwf"/>
+                            <constraint firstItem="c9N-fk-LGq" firstAttribute="top" secondItem="D2w-C6-dFn" secondAttribute="bottom" constant="35" id="NSZ-2z-S10"/>
+                            <constraint firstItem="c9N-fk-LGq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bMV-ZY-4cP"/>
+                            <constraint firstItem="SDv-eL-ERn" firstAttribute="centerX" secondItem="c9N-fk-LGq" secondAttribute="centerX" id="ckv-O2-c4e"/>
+                            <constraint firstItem="1IQ-62-pGb" firstAttribute="centerX" secondItem="SDv-eL-ERn" secondAttribute="centerX" id="ppg-rW-dLO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D2w-C6-dFn" secondAttribute="trailing" constant="20" id="qwu-a0-M4M"/>
+                            <constraint firstItem="xvF-5b-oe4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="vGH-oq-x8b"/>
+                            <constraint firstItem="1IQ-62-pGb" firstAttribute="top" secondItem="SDv-eL-ERn" secondAttribute="bottom" constant="35" id="wx4-vS-VKF"/>
+                            <constraint firstItem="D2w-C6-dFn" firstAttribute="top" secondItem="xvF-5b-oe4" secondAttribute="bottom" constant="25" id="yCL-qh-4MR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="xvF-5b-oe4" id="TTJ-qZ-cFi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="48.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>
