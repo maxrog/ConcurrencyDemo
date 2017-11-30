@@ -50,7 +50,7 @@ class ImageDownloaderViewController: UIViewController {
     @IBAction func simpleAsynchronousDownload(_ sender: UIButton) {
         guard let url = URL(string: LargeImages.shark.rawValue) else { return }
         
-        // Create our own synchronous queue
+        // Create our own serial queue
         let downloadQueue = DispatchQueue(label: "download", attributes: [])
         
         downloadQueue.async {
@@ -69,12 +69,34 @@ class ImageDownloaderViewController: UIViewController {
     
     // MARK: - Improved Async Download
     
+    // Download a large image in a global queue and use a completion closure
     @IBAction func asynchronousDownload(_ sender: UIButton) {
-        
+        downloadLargeImage { (image) in
+            self.imageView.image = image
+        }
     }
     
+    // MARK: - Completion Handler Method for Async Download
     
-    
-
+    func downloadLargeImage(completionHandler handler: @escaping (UIImage) -> Void) {
+        // .background == low priority
+        // .userInitiated == normal priorty
+        // .userInteractive == high priority
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let url = URL(string: LargeImages.whale.rawValue) else { return }
+            do {
+                let imageData = try Data(contentsOf: url)
+                guard let image = UIImage(data: imageData) else { return }
+                
+                // Good practice to put completion handlers in main queue
+                DispatchQueue.main.async {
+                    handler(image)
+                }
+            } catch let error {
+                print("Error creating data from url", error)
+                return
+            }
+        }
+    }
 
 }
