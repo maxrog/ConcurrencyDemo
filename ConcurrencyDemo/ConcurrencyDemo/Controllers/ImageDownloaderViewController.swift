@@ -46,9 +46,25 @@ class ImageDownloaderViewController: UIViewController {
     
     // MARK: - Simple Async Download
     
-    // Download a large image, by creating a background queue, avoiding blocking the UI
+    // Download a large image by creating a background queue, avoiding blockage of the UI and main queue
     @IBAction func simpleAsynchronousDownload(_ sender: UIButton) {
+        guard let url = URL(string: LargeImages.shark.rawValue) else { return }
         
+        // Create our own synchronous queue
+        let downloadQueue = DispatchQueue(label: "download", attributes: [])
+        
+        downloadQueue.async {
+            do {
+                let imageData = try Data(contentsOf: url)
+                let image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            } catch let error {
+                print("Error creating data from url", error)
+                return
+            }
+        }
     }
     
     // MARK: - Improved Async Download
