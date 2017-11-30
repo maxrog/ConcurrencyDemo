@@ -25,14 +25,23 @@ class ImageDownloaderViewController: UIViewController {
     
     // If slider isn't allowing interaction, the main queue is blocked
     @IBAction func changeImageAlpha(_ sender: UISlider) {
-        imageView.alpha = sender.value
+        imageView.alpha = CGFloat(sender.value)
     }
     
     // MARK: - Sync Download
     
     // Download a large image, blocking the main queue and the UI -- BAD -- don't do this
     @IBAction func synchronousDownload(_ sender: UIButton) {
+        guard let url = URL(string: LargeImages.seaLion.rawValue) else { return }
         
+        do {
+            let imageData = try Data(contentsOf: url)
+            let image = UIImage(data: imageData)
+            imageView.image = image
+        } catch let error {
+            print("Error creating data from url", error)
+            return
+        }
     }
     
     // MARK: - Simple Async Download
